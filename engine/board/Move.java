@@ -1,8 +1,6 @@
-package com.mushroomboozehound.Chess_Game.engine.board
+package com.mushroomboozehound.Chess_Game.engine.board;
 
--Game.engine.board;
-
-import com.mushroomboozehound.Chess-Game.engine.pieces.Piece;
+import com.mushroomboozehound.Chess_Game.engine.pieces.Piece;
 
 public abstract class Move {
     final Board board;

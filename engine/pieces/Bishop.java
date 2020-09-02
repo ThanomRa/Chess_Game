@@ -15,11 +15,11 @@ import java.util.List;
 
 import static com.mushroomboozehound.Chess_Game.engine.board.BoardUtils.isValidTileCoordinate;
 
-public class Bishop extends Piece {
+public final class Bishop extends Piece {
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9,-7,7,9};
 
-    Bishop(int piecePosition, Alliance pieceAlliance) {
+    public Bishop (int piecePosition, Alliance pieceAlliance) {
         super(piecePosition, pieceAlliance);
     }
 
