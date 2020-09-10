@@ -1,6 +1,7 @@
 package com.mushroomboozehound.Chess_Game.engine.board;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.mushroomboozehound.Chess_Game.engine.Alliance;
 import com.mushroomboozehound.Chess_Game.engine.pieces.*;
 import com.mushroomboozehound.Chess_Game.engine.player.BlackPlayer;
@@ -130,10 +131,15 @@ public class Board {
         return builder.build();
     }
 
+    public Iterable<Move> getAllLegalMoves() {
+        return Iterables.unmodifiableIterable(Iterables.concat(this.whitePlayer.getLegalMoves(), this.blackPlayer.getLegalMoves()));
+    }
+
 
     public static class Builder{
         Map<Integer, Piece> boardConfig;
         Alliance nextMoveMaker;
+        Pawn emPassantPawn;
 
         public Builder(){
             this.boardConfig = new HashMap<>();
@@ -149,6 +155,9 @@ public class Board {
 
         public Board build() {
             return new Board(this);
+        }
+
+        public void setEnPassantPawn(Pawn movedPawn) {
         }
     }
 }
