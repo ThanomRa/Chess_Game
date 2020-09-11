@@ -1,6 +1,7 @@
 package com.mushroomboozehound.Chess_Game.engine.player;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.mushroomboozehound.Chess_Game.engine.Alliance;
 import com.mushroomboozehound.Chess_Game.engine.board.Board;
 import com.mushroomboozehound.Chess_Game.engine.board.Move;
@@ -22,7 +23,7 @@ public abstract class Player {
            final Collection<Move> opponentMoves){
         this.board = board;
         this.playerKing = establishKing();
-        this.legalMoves = legalMoves;
+        this.legalMoves = ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMoves)));
         this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
     }
     public King getPlayerKing(){
